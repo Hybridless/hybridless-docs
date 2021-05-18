@@ -1,6 +1,4 @@
-# Minimal Setup
-
-### Minimal Setup
+# Setup
 
 The minimal setup could be done as:
 
