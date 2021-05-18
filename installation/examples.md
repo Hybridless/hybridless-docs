@@ -13,5 +13,5 @@ Examples are maintained on a separate repository and should be up-to-date with a
 | CloudFormation |  |
 |  |  |
 
-All examples can be found on this [repository](https://github.com/hybridless/examples) on GitHub.
+All examples can be found in this [repository](https://github.com/hybridless/examples) on GitHub.
 
