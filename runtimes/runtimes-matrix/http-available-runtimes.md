@@ -1,6 +1,6 @@
-# Http Available runtimes
+# Httpd Available runtimes
 
-### Runtimes for httpd
+### Runtimes for [httpd](../../api-reference/function-reference/function-type-httpd.md)
 
 <table>
   <thead>
@@ -70,17 +70,23 @@
       </td>
       <td style="text-align:center">-</td>
       <td style="text-align:center">-</td>
-      <td style="text-align:center">Can be based on any hybridless httpd runtime</td>
+      <td style="text-align:center">Can be based on any hybridless httpd runtimes or not.</td>
     </tr>
   </tbody>
 </table>
 
-### Runtime images for httpd
+### 
+
+### Runtime images for [httpd](../../api-reference/function-reference/function-type-httpd.md)
 
 Hybridless uses the following images for the languages and versions specified above.
 
+{% hint style="warning" %}
+You are not required to use the following docker files \(`dockerFile` prop of a function event\) if you are using the standard runtimes, however, if you want to customize nodejs10 runtime for example, to have FFMPEG, you could use the following base nodejs10 image as the base and install what you need, but keeping the same runtime basics from what is automatically done by hybridless. 
+{% endhint %}
+
 {% tabs %}
-{% tab title="Nodejs 10.x" %}
+{% tab title="Nodejs 10" %}
 {% code title="Dockerfile" %}
 ```text
 FROM ghcr.io/hybridless/node:10-alpine
@@ -88,6 +94,8 @@ FROM ghcr.io/hybridless/node:10-alpine
 # Copy files
 COPY /usr/src/app/ /usr/src/app/
 COPY proxy.js /usr/src/httpd/proxy.js
+
+## CUSTOMIZE YOUR CONTAINER HERE
 
 # Set the working directory
 WORKDIR /usr/src/app
@@ -122,7 +130,7 @@ runtimeInstance.start();
 {% endcode %}
 {% endtab %}
 
-{% tab title="Nodejs 13.x" %}
+{% tab title="Nodejs 13" %}
 {% code title="Dockerfile" %}
 ```
 FROM ghcr.io/hybridless/node:13-alpine
@@ -130,6 +138,8 @@ FROM ghcr.io/hybridless/node:13-alpine
 # Copy files
 COPY /usr/src/app/ /usr/src/app/
 COPY proxy.js /usr/src/httpd/proxy.js
+
+## CUSTOMIZE YOUR CONTAINER HERE
 
 # Set the working directory
 WORKDIR /usr/src/app
@@ -168,6 +178,8 @@ runtimeInstance.start();
 ```text
 FROM ghcr.io/hybridless/webdevops/php-nginx:alpine-php5
 
+## CUSTOMIZE YOUR CONTAINER HERE
+
 # customize fastcgi
 RUN echo proxy_buffer_size          128k; >> /opt/docker/etc/nginx/vhost.common.d/10-php.conf 
 RUN echo proxy_buffers          4 256k; >> /opt/docker/etc/nginx/vhost.common.d/10-php.conf 
@@ -182,6 +194,8 @@ COPY /app/ /app/
 {% tab title="PHP7" %}
 ```
 FROM ghcr.io/hybridless/webdevops/php-nginx:alpine-php7
+
+## CUSTOMIZE YOUR CONTAINER HERE
 
 # customize fastcgi
 RUN echo proxy_buffer_size          128k; >> /opt/docker/etc/nginx/conf.d/10-php.conf

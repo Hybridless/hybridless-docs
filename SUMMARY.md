@@ -30,7 +30,7 @@
 
 * [Concept](runtimes/concept.md)
 * [Runtimes Matrix](runtimes/runtimes-matrix/README.md)
-  * [Http Available runtimes](runtimes/runtimes-matrix/http-available-runtimes.md)
+  * [Httpd Available runtimes](runtimes/runtimes-matrix/http-available-runtimes.md)
   * [Process Available runtimes](runtimes/runtimes-matrix/process-available-runtimes.md)
   * [ScheduledTask Available Runtimes](runtimes/runtimes-matrix/scheduledtask-available-runtimes.md)
   * [LambdaContainer Available Runtimes](runtimes/runtimes-matrix/lambdacontainer-available-runtimes.md)
