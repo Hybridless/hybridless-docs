@@ -9,6 +9,7 @@
 * [Configure Environments Ivars](installation/configure-environments-ivars.md)
 * [Configure Webpack](installation/configure-webpack.md)
 * [Define your function](installation/define-your-function.md)
+* [What's next?](installation/whats-next.md)
 * [Examples](installation/examples.md)
 
 ## Concepts
@@ -39,7 +40,8 @@
 * [Plugin Reference](api-reference/plugin-reference.md)
 * [Cluster Reference](api-reference/cluster-reference.md)
 * [Function Reference](api-reference/function-reference/README.md)
-  * [Types](api-reference/function-reference/types.md)
+  * [Overview](api-reference/function-reference/overview.md)
+  * [Function Types](api-reference/function-reference/types.md)
   * [Function Type - httpd](api-reference/function-reference/function-type-httpd.md)
   * [Function Type - process](api-reference/function-reference/function-type-process.md)
   * [Function Type - scheduledTask](api-reference/function-reference/function-type-scheduledtask.md)
@@ -57,5 +59,6 @@
     * [dynamostreams](api-reference/function-reference/lambda-protocols/dynamostreams.md)
     * [httpLoadBalancer](api-reference/function-reference/lambda-protocols/httploadbalancer.md)
     * [http](api-reference/function-reference/lambda-protocols/http.md)
+  * [Lambda Protocols vs. Function types](api-reference/function-reference/lambda-protocols-vs.-function-types.md)
 * [Untitled](api-reference/untitled.md)
 

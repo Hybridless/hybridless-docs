@@ -6,6 +6,8 @@ Basically, the idea is to create an entry on your **serverless.yml** file pointi
 
 Add the custom section to your **serverless.yml** file:
 
+{% tabs %}
+{% tab title="Partial" %}
 {% code title="serverless.yml" %}
 ```yaml
 custom:
@@ -14,6 +16,29 @@ custom:
     includeModules: true
 ```
 {% endcode %}
+{% endtab %}
+
+{% tab title="Complete File" %}
+```
+service: example
+plugins:
+  - '@hybridless/hybridless'
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'ca-central-1'}
+  memorySize: 512
+  timeout: 30
+  environment: ${file(env.yml):${self:custom.stage}}
+custom:
+  stage: ${self:provider.stage}
+  webpack:
+    webpackConfig: ./src/webpack.config.js
+    includeModules: true
+```
+{% endtab %}
+{% endtabs %}
 
 Now, the most important is creating the webpack config file. This can be on any path absolute to your project and needs to be in javascript format so you can execute the hybridless static interface to get the entry point functions and externals required to properly compile your code.
 
@@ -58,8 +83,8 @@ module.exports = {
 ```
 
 {% hint style="warning" %}
-Theorically you can customize your webpack configuration as you will, except by not removing the the entries and externals call for the hybridless framework.
+Theoretically, you can customize your webpack configuration as you will, except by not removing the entries and externals calls for the hybridless framework.
 {% endhint %}
 
-It's relevant to say that all this webpack job is done by levering the webpack, babel and serverless-webpack plugin, so any additional configuration or problem with this specifically might be found on these projects pages. Also, another important point is that all the management of these dependecies, the setup is handled for you, so try to not duplicate the serverless-webpack setup on your serverless.yml file for example, this could lead to undocumented issues.
+It's relevant to say that all this webpack job is done by levering the [webpack](https://github.com/webpack/webpack), [babel](https://babeljs.io/) and [serverless-webpack](https://github.com/serverless-heaven/serverless-webpack#readme) plugin, so any additional configuration or problem with this specifically, might be found on these projects pages. Also, another important point is that all the management of these dependencies and setup is handled for you, so try to not duplicate the `serverless-webpack` setup on your serverless.yml file, for example. This could lead to undocumented issues.
 

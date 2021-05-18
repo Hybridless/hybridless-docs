@@ -1,2 +1,2 @@
-# Types
+# Function Types
 
