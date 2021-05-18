@@ -38,6 +38,8 @@ provider:
   memorySize: 512
   timeout: 30
   environment: ${file(env.yml):${self:custom.stage}}
+custom:
+  stage: ${self:provider.stage}
 ```
 {% endcode %}
 

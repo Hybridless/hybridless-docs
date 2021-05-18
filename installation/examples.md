@@ -4,8 +4,8 @@ Examples are maintained on a separate repository and should be up-to-date with a
 
 | Example | Link |
 | :--- | :--- |
-| Minimal |  |
-| Webpack |  |
+| Minimal | [https://github.com/Hybridless/examples/tree/master/example-simple](https://github.com/Hybridless/examples/tree/master/example-simple) |
+| Webpack | [https://github.com/Hybridless/examples/tree/master/example-webpack](https://github.com/Hybridless/examples/tree/master/example-webpack) |
 | Hybrid clusters |  |
 | Processes |  |
 | Containers |  |

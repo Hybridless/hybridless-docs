@@ -1,5 +1,9 @@
 # Configure Webpack
 
+{% hint style="warning" %}
+If you are not enabling webpack and have javascript functions \(using nodejs runtimes\), you show specify plugin option [`disableWebpack`](../api-reference/plugin-reference.md) to avoid errors.
+{% endhint %}
+
 Optionally, **if you are using Javascript \(ES6&gt;\)** at the function level \(your code\) you probably will want to have webpack enabled so everything is compiled before deploying it. Luckily all the dependency management for webpack, babel-core and loader, and serverless integration is done for you, except two little steps that allow you to have full control over your webpack configuration, instead of using embedded webpack configurations as commonly see on spa react apps.
 
 Basically, the idea is to create an entry on your **serverless.yml** file pointing the webpack configuration to your `webpack.config.js` and then create the webpack configuration file. This configuration file will have entry functions and externals exported by the hybridless framework, indicating what functions are required to be compiled and how.

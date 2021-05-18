@@ -27,7 +27,7 @@ prod:
 
 This approach allows you to have multiple configurations based on your stage need and also to have a bunch of different configurations and constants injected right on your task or lambda and accessible on the process environment ivars. 
 
-Theorically you can live with one environment file per project, but if desired, you can always specify the environment property on the function or even event level to have that specific function in that environments only. This property allows a pure key-value object but would also allow the import syntax below.
+Theoretically, you can live with one environment file per project, but if desired, you can always specify the environment property on the function or even event level to have that specific function with a set of specific environments only. This property allows a pure key-value object but would also allow the import syntax below.
 
 ```yaml
 ${file(config/another_env.yml):${self:custom.stage}}

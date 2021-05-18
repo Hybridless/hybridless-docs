@@ -49,6 +49,11 @@ custom:
 hybridless:
   functions:
     HTTP:
+      vpc:
+        cidr: 10.0.0.0/16
+        subnets:
+          - 10.0.0.0/24
+          - 10.0.1.0/24
       handler: src/handler.handler
       memory: 512
       timeout: 60
@@ -72,6 +77,11 @@ And because we use a function-first approach and the deployment/resource strateg
 hybridless:
   functions:
     ClusterName:
+      vpc:
+        cidr: 10.0.0.0/16
+        subnets:
+          - 10.0.0.0/24
+          - 10.0.1.0/24
       handler: src/handler.handler
       memory: 512
       timeout: 60
@@ -119,18 +129,46 @@ For the lack of **simplicity**, we are using[`httpd`](../api-reference/function-
 
 After creating the definition to deploy your code in a hybrid environment the last thing missing is our code. Because we have enabled webpack and therefore ES6 is available to its full power, we can change the handler.js file created by the serverless setup command to something like this, or we could leave it as is but changing the export name from `hello`, to `handler` because it's the function specified in our definition. 
 
-{% code title="handler.js" %}
+{% tabs %}
+{% tab title="ES6" %}
+{% code title="src/handler.js" %}
 ```javascript
 export const handler = async (event, context) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      context.succeed({ body: {}, statusCode: 200 });
+      context.succeed({ body: { message: 'Hello from Hybridless' }, statusCode: 200 });
       resolve();
     }, 200);
   })
 };
 ```
 {% endcode %}
+{% endtab %}
+
+{% tab title="Plain Javascript" %}
+```
+'use strict';
+
+module.exports.handler = async (event) => {
+  return {
+    statusCode: 200,
+    body: JSON.stringify(
+      {
+        message: 'Hello from Hybridless!',
+        input: event,
+      },
+      null,
+      2
+    ),
+  };
+
+  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
+  // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
+};
+
+```
+{% endtab %}
+{% endtabs %}
 
 
 
