@@ -8,9 +8,6 @@ description: Hybrid function-driven development framework
 * ![GitHub commit activity](http://img.shields.io/github/commit-activity/m/hybridless/hybridless)
 * ![GitHub last commit](http://img.shields.io/github/last-commit/hybridless/hybridless)
 
-> **⚠ WARNING: Plugin under initial development .**  
-> Exceptions, breaking changes and malfunctioning is expected til 0.1.0 is reach.  Documentation is also not up to date.
-
 ## Hybrid function-driven development framework
 
 Hybridless is a plug-in on top of serverless that allows you to have a hybrid platform defined on your serverless definition that shares the same code base and has minimal difference between the lambda and long-running functions.
@@ -21,7 +18,7 @@ Hybridless implements the Concept of runtimes/buildpacks to allow developers to 
 
 ## Documentation
 
-Human-readable documentation will be available at [hybridless.com](https://hybridless.com) SOON!
+Human readable documentation will is available at [hybridless.com](https://docs.hybridless.com)
 
 ### General Options Documentation
 
