@@ -140,8 +140,6 @@ EXPOSE $PORT
 
 # Run the specified command within the container.
 ENTRYPOINT node ../httpd/proxy.js
-
-
 ```
 {% endcode %}
 
