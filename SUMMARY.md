@@ -2,14 +2,14 @@
 
 * [Hybridless Framework](README.md)
 
-## Install <a id="installation-1"></a>
+## Install <a id="installation"></a>
 
-* [Requirements](installation-1/untitled.md)
-* [Setup](installation-1/untitled-1.md)
-* [Configure Environments Ivars](installation-1/configure-environments-ivars.md)
-* [Configure Webpack](installation-1/configure-webpack.md)
-* [Define your function](installation-1/define-your-function.md)
-* [Examples](installation-1/examples.md)
+* [Requirements](installation/untitled.md)
+* [Setup](installation/untitled-1.md)
+* [Configure Environments Ivars](installation/configure-environments-ivars.md)
+* [Configure Webpack](installation/configure-webpack.md)
+* [Define your function](installation/define-your-function.md)
+* [Examples](installation/examples.md)
 
 ## Concepts
 
