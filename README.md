@@ -4,9 +4,10 @@ description: Hybrid function-driven development framework
 
 # Hybridless Framework
 
-* ![npm](https://img.shields.io/npm/dy/@hybridless/hybridless) ![npm](https://img.shields.io/npm/v/@hybridless/hybridless) ![npm \(tag\)](https://img.shields.io/npm/v/@hybridless/hybridless/latest) ![Libraries.io dependency status for latest release, scoped npm package](https://img.shields.io/librariesio/release/npm/@hybridless/hybridless)
-* ![GitHub commit activity](http://img.shields.io/github/commit-activity/m/hybridless/hybridless)
-* ![GitHub last commit](http://img.shields.io/github/last-commit/hybridless/hybridless)
+* ![npm](https://img.shields.io/npm/v/@hybridless/hybridless?style=for-the-badge) ![npm \(tag\)](https://img.shields.io/npm/v/@hybridless/hybridless/latest?style=for-the-badge) ![Libraries.io dependency status for latest release, scoped npm package](https://img.shields.io/librariesio/release/npm/@hybridless/hybridless?style=for-the-badge)
+* ![npm](https://img.shields.io/npm/dy/@hybridless/hybridless?style=for-the-badge) ![GitHub commit activity](http://img.shields.io/github/commit-activity/m/hybridless/hybridless?style=for-the-badge) ![GitHub last commit](http://img.shields.io/github/last-commit/hybridless/hybridless?style=for-the-badge)
+* ![GitHub License](https://img.shields.io/github/license/hybridless/hybridless?style=for-the-badge)
+* [![GitHub stars](https://img.shields.io/github/stars/hybridless/hybridless?style=social&label=Star&maxAge=2592000)](https://github.com/hybridless/hybridless/stargazers/) [![GitHub watchers](https://img.shields.io/github/watchers/hybridless/hybridless?style=social&label=Watch&maxAge=2592000)](https://github.com/hybridless/hybridless/watchers/) [Repository Link](https://github.com/hybridless/hybridless)
 
 {% hint style="warning" %}
 🚧 This documentation is under initial revision might be inaccurate, wait until 0.1.0 release 🚧
