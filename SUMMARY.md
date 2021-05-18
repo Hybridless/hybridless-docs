@@ -29,8 +29,12 @@
 ## Runtimes
 
 * [Concept](runtimes/concept.md)
-* [Source Images](runtimes/source-images.md)
-* [Runtimes Matrix](runtimes/runtimes-matrix.md)
+* [Runtimes Matrix](runtimes/runtimes-matrix/README.md)
+  * [Http Available runtimes](runtimes/runtimes-matrix/http-available-runtimes.md)
+  * [Process Available runtimes](runtimes/runtimes-matrix/process-available-runtimes.md)
+  * [ScheduledTask Available Runtimes](runtimes/runtimes-matrix/scheduledtask-available-runtimes.md)
+  * [LambdaContainer Available Runtimes](runtimes/runtimes-matrix/lambdacontainer-available-runtimes.md)
+  * [Lambda Available Runtimes](runtimes/runtimes-matrix/lambda-available-runtimes.md)
 * [Hybridless registry](runtimes/hybridless-registry.md)
 * [Extending](runtimes/extending.md)
 
@@ -60,5 +64,10 @@
     * [httpLoadBalancer](api-reference/function-reference/lambda-protocols/httploadbalancer.md)
     * [http](api-reference/function-reference/lambda-protocols/http.md)
   * [Lambda Protocols vs. Function types](api-reference/function-reference/lambda-protocols-vs.-function-types.md)
-* [Untitled](api-reference/untitled.md)
+
+## CloudFormation
+
+* [Outputs](cloudformation/outputs.md)
+* [Referencing Resources](cloudformation/referencing-resources.md)
+* [Extending with CloudFormation](cloudformation/extending-with-cloudformation.md)
 
