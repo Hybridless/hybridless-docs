@@ -1,6 +1,6 @@
 # Process Available runtimes
 
-### Runtimes for [process](../../api-reference/function-reference/function-type-process.md)
+## Runtimes for [process](../../api-reference/function-reference/function-type-process.md)
 
 <table>
   <thead>
@@ -52,7 +52,7 @@
 
 ### 
 
-### Runtime images for [process](../../api-reference/function-reference/function-type-process.md)
+## Runtime images for [process](../../api-reference/function-reference/function-type-process.md)
 
 Hybridless uses the following images for the languages and versions specified above.
 
@@ -113,7 +113,7 @@ ENTRYPOINT EXEC -e $ENTRYPOINT -e $ENTRYPOINT_FUNC
 
 
 
-### Concept
+## Concept
 
 Process runtimes are basically entrypoints to long-life executables that should only exit when something wrong happens. This process initiated by executing the executable is in the foreground and the monitored process. So forking or spawning new child processes is possible as long the root process is not terminated. 
 
@@ -123,7 +123,11 @@ Terminated processes will generally result in ECS trying to initiate a new task,
 
 
 
-#### Exposed Ivars
+## Additional Details
+
+### Exposed Ivars
+
+Following environment variables are exposed to the process:
 
 * `ENTRYPOINT` - The file relative to the working directory that should be executed. 
 * `ENTRYPOINT_FUNC` - The function inside the entrypoint file that should be executed.
@@ -134,6 +138,59 @@ Terminated processes will generally result in ECS trying to initiate a new task,
 * `NEW_RELIC_APP_NAME` - New relic application display name.
 * `NEW_RELIC_LICENSE_KEY`- New relic license key.
 * `NEW_RELIC_NO_CONFIG_FILE` - Indicates to new relic SDK to use license key from environment ivars.
+
+
+
+### Directory and files
+
+For [process](../../api-reference/function-reference/function-type-process.md) tasks the following files will be available at the Docker image build directory:
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Source</th>
+      <th style="text-align:center">Destination</th>
+      <th style="text-align:center">Runtime</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">
+        <p>One of the following:</p>
+        <ul>
+          <li><code>Builtin Runtime</code> Docker File</li>
+          <li>Custom Docker File (prop <code>dockerFile</code> of the event)</li>
+        </ul>
+      </td>
+      <td style="text-align:center">./Dockerfile</td>
+      <td style="text-align:center">ANY</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p></p>
+        <p>If webpack is enabled, first option will be selected.</p>
+        <ul>
+          <li><code>{projectDir}/.webpack/service</code>
+          </li>
+          <li><code>{projectDir}/</code>
+          </li>
+        </ul>
+      </td>
+      <td style="text-align:center">./usr/src/app</td>
+      <td style="text-align:center">nodejsX</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <ul>
+          <li>All specified files from the event property<code>additionaDockerFiles</code>will
+            be imported after the standard files listed above.</li>
+        </ul>
+      </td>
+      <td style="text-align:center">./{specified destination path}</td>
+      <td style="text-align:center">ANY</td>
+    </tr>
+  </tbody>
+</table>
 
 
 

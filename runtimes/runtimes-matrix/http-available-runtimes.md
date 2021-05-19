@@ -1,6 +1,6 @@
 # Httpd Available runtimes
 
-### Runtimes for [httpd](../../api-reference/function-reference/function-type-httpd.md)
+## Runtimes for [httpd](../../api-reference/function-reference/function-type-httpd.md)
 
 <table>
   <thead>
@@ -77,7 +77,7 @@
 
 ### 
 
-### Runtime images for [httpd](../../api-reference/function-reference/function-type-httpd.md)
+## Runtime images for [httpd](../../api-reference/function-reference/function-type-httpd.md)
 
 Hybridless uses the following images for the languages and versions specified above.
 
@@ -184,6 +184,7 @@ If you want to customize your `proxy.js` file or any behaviour of the nodejs htt
 {% endtab %}
 
 {% tab title="PHP5" %}
+{% code title="Dockerfile" %}
 ```text
 FROM ghcr.io/hybridless/webdevops/php-nginx:alpine-php5
 
@@ -198,9 +199,17 @@ RUN echo proxy_busy_buffers_size    256k; >> /opt/docker/etc/nginx/vhost.common.
 COPY /app/ /app/
 
 ```
+{% endcode %}
+
+{% code title="healthCheck.php" %}
+```text
+<?php echo('Healthy!'); ?>
+```
+{% endcode %}
 {% endtab %}
 
 {% tab title="PHP7" %}
+{% code title="Dockerfile" %}
 ```
 FROM ghcr.io/hybridless/webdevops/php-nginx:alpine-php7
 
@@ -215,6 +224,13 @@ RUN echo proxy_busy_buffers_size    256k; >> /opt/docker/etc/nginx/conf.d/10-php
 COPY /app/ /app/
 
 ```
+{% endcode %}
+
+{% code title="healthCheck.php" %}
+```text
+<?php echo('Healthy!'); ?>
+```
+{% endcode %}
 {% endtab %}
 
 {% tab title="Custom" %}
@@ -230,7 +246,7 @@ COPY /app/ /app/
 
 ### 
 
-### Concept
+## Concept
 
 Httpd runtimes are expected to have a plain HTTP socket opened and listening to the port exposed via`$PORT`environment. It also has some other [ivars exposed](http-available-runtimes.md#exposed-ivars), so your HTTP server can impose some constraints on the server-side and gracefully handle timeouts for example. 
 
@@ -238,7 +254,11 @@ Events will generally come from ALB and will be routed through load balancer lis
 
 
 
-#### Exposed Ivars
+## Additional Details
+
+### Exposed Ivars
+
+Following environment variables are exposed to the process:
 
 * `PORT` - Which port should your listener be listening to.
 * `TIMEOUT` - Timeout that should be respected by your request; If behind a load balancer request shall be dropped a second later if you don't timeout by yourself. **In milliseconds, not seconds.**
@@ -257,5 +277,66 @@ Events will generally come from ALB and will be routed through load balancer lis
 
 
 
+### Directory and files
 
+For [httpd](../../api-reference/function-reference/function-type-httpd.md) tasks the following files will be available at the Docker image build directory:
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Source</th>
+      <th style="text-align:center">Destination</th>
+      <th style="text-align:center">Runtime</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">
+        <p>One of the following:</p>
+        <ul>
+          <li><code>Builtin Runtime</code> Docker File</li>
+          <li>Custom Docker File (prop <code>dockerFile</code> of the event)</li>
+        </ul>
+      </td>
+      <td style="text-align:center">./Dockerfile</td>
+      <td style="text-align:center">ANY</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p></p>
+        <p>If webpack is enabled, first option will be selected.</p>
+        <ul>
+          <li><code>{projectDir}/.webpack/service</code>
+          </li>
+          <li><code>{projectDir}/</code>
+          </li>
+        </ul>
+      </td>
+      <td style="text-align:center">./usr/src/app</td>
+      <td style="text-align:center">nodejsX</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p></p>
+        <p></p>
+        <ul>
+          <li><code>Builtin healthCheck</code>  <a href="https://github.com/Hybridless/hybridless/blob/master/src/assets/task-httpd/healthCheck.php">php file</a>
+          </li>
+        </ul>
+      </td>
+      <td style="text-align:center">./app/{dynamic|specified health route}</td>
+      <td style="text-align:center">phpX</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <ul>
+          <li>All specified files from the event property <code>additionaDockerFiles</code> will
+            be imported after the standard files listed above.</li>
+        </ul>
+      </td>
+      <td style="text-align:center">./{specified destination path}</td>
+      <td style="text-align:center">ANY</td>
+    </tr>
+  </tbody>
+</table>
 
