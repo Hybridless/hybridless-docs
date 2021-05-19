@@ -1,2 +1,2 @@
-# LambdaContainer Available Runtimes
+# LambdaContainer Runtimes
 

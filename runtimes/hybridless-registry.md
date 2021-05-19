@@ -16,12 +16,12 @@ The repository is **scheduled to update** and push from the Docker registry **we
 
 Scan on push on ECR repositories created by hybridless to push your images is strongly encouraged, so from the base image hybridless use to your application code, everything is scanned. 
 
-{% hint style="danger" %}
-Absolutely, **no images** from the **applications being deployed** with Hybridless are pushed to the Hybridless registry and neither public visible to anyone. **Only pulling operations are done on the registry.**
-{% endhint %}
-
 {% hint style="info" %}
 This feature is not supported yet, but soon will be available on the plugin and event-level so you can opt-in and enable image scanning services.
+{% endhint %}
+
+{% hint style="danger" %}
+Absolutely, **no images** from the **applications being deployed** with Hybridless are pushed to the Hybridless registry and neither public visible to anyone. **Only pulling operations are done on the registry** and your application images are hosted on your account inside ECR service fo the region being deployed.
 {% endhint %}
 
 ### 

@@ -1,4 +1,4 @@
-# ScheduledTask Available Runtimes
+# ScheduledTask Runtimes
 
 ## Runtimes for [scheduledTask](../../api-reference/function-reference/function-type-scheduledtask.md)
 
@@ -194,5 +194,7 @@ For [scheduledTask](../../api-reference/function-reference/function-type-schedul
   </tbody>
 </table>
 
-
+{% hint style="danger" %}
+It's important to remember that these mappings are to the **Docker image build directory** so not copying the files from the build directory to the image with `RUN`  command in the **Docker file** will result in these files being discarded and not available at the container.
+{% endhint %}
 

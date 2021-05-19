@@ -14,6 +14,7 @@ Add the custom section to your **serverless.yml** file:
 {% tab title="Partial" %}
 {% code title="serverless.yml" %}
 ```yaml
+.....
 custom:
   webpack: #Please, https://github.com/serverless-heaven/serverless-webpack#configure for more webpack options
     webpackConfig: ./src/webpack.config.js

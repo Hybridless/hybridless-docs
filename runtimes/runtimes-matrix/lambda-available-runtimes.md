@@ -1,2 +1,2 @@
-# Lambda Available Runtimes
+# Lambda Runtimes
 

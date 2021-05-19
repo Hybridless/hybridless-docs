@@ -1,4 +1,4 @@
-# Httpd Available runtimes
+# Httpd Runtimes
 
 ## Runtimes for [httpd](../../api-reference/function-reference/function-type-httpd.md)
 
@@ -262,18 +262,21 @@ Following environment variables are exposed to the process:
 
 * `PORT` - Which port should your listener be listening to.
 * `TIMEOUT` - Timeout that should be respected by your request; If behind a load balancer request shall be dropped a second later if you don't timeout by yourself. **In milliseconds, not seconds.**
-* `ENTRYPOINT` - The file relative to the working directory that should be executed. 
-* `ENTRYPOINT_FUNC` - The function inside the entrypoint file that should be executed.
+* `ENTRYPOINT` 
+  * `nodejsX`- The specified handler file.
+  * `container` - The `entrypoint` property of the event.
+* `WEB_DOCUMENT_INDEX` - Only available on `phpX` runtimes, indicates the handler indicated on the function or event level.
+* `ENTRYPOINT_FUNC` - The function inside the entrypoint file that should be executed. Only available on `nodejsX` runtimes.
 * `HYBRIDLESS_RUNTIME` - Indicates it's running on hybridless runtime and not in lambda for example.
 * `CORS` - Optionally, CORS structure from the configuration is exposed if available/specified.
 * `HEALTH_ROUTE` - Which route is specified as the health check route so you can make additional logic if you will.
 * `STAGE` - Which stage this task is running on.
 * `AWS_REGION` - In which AWS region we are.
 * `AWS_ACCOUNT_ID` - Which account this task is deployed.
-* `NEW_RELIC_ENABLED` - Indicates if new relic monitoring framework should be enabled.
-* `NEW_RELIC_APP_NAME` - New relic application display name.
-* `NEW_RELIC_LICENSE_KEY`- New relic license key.
-* `NEW_RELIC_NO_CONFIG_FILE` - Indicates to new relic SDK to use license key from environment ivars.
+* `NEW_RELIC_ENABLED` - Indicates if NewRelic monitoring framework should be enabled.
+* `NEW_RELIC_APP_NAME` - NewRelic application display name.
+* `NEW_RELIC_LICENSE_KEY`- NewRelic license key.
+* `NEW_RELIC_NO_CONFIG_FILE` - Indicates to NewRelic SDK to use the license key from environment ivars.
 
 
 
@@ -339,4 +342,8 @@ For [httpd](../../api-reference/function-reference/function-type-httpd.md) tasks
     </tr>
   </tbody>
 </table>
+
+{% hint style="danger" %}
+It's important to remember that these mappings are to the **Docker image build directory** so not copying the files from the build directory to the image with `RUN`  command in the **Docker file** will result in these files being discarded and not available at the container.
+{% endhint %}
 

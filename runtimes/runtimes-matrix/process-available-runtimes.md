@@ -1,4 +1,4 @@
-# Process Available runtimes
+# Process Runtimes
 
 ## Runtimes for [process](../../api-reference/function-reference/function-type-process.md)
 
@@ -192,5 +192,7 @@ For [process](../../api-reference/function-reference/function-type-process.md) t
   </tbody>
 </table>
 
-
+{% hint style="danger" %}
+It's important to remember that these mappings are to the **Docker image build directory** so not copying the files from the build directory to the image with `RUN`  command in the **Docker file** will result in these files being discarded and not available at the container.
+{% endhint %}
 

@@ -30,11 +30,11 @@
 
 * [Runtimes In-Depth](runtimes/concept.md)
 * [Runtimes Matrix](runtimes/runtimes-matrix/README.md)
-  * [Httpd Available runtimes](runtimes/runtimes-matrix/http-available-runtimes.md)
-  * [Process Available runtimes](runtimes/runtimes-matrix/process-available-runtimes.md)
-  * [ScheduledTask Available Runtimes](runtimes/runtimes-matrix/scheduledtask-available-runtimes.md)
-  * [LambdaContainer Available Runtimes](runtimes/runtimes-matrix/lambdacontainer-available-runtimes.md)
-  * [Lambda Available Runtimes](runtimes/runtimes-matrix/lambda-available-runtimes.md)
+  * [Httpd Runtimes](runtimes/runtimes-matrix/http-available-runtimes.md)
+  * [Process Runtimes](runtimes/runtimes-matrix/process-available-runtimes.md)
+  * [ScheduledTask Runtimes](runtimes/runtimes-matrix/scheduledtask-available-runtimes.md)
+  * [LambdaContainer Runtimes](runtimes/runtimes-matrix/lambdacontainer-available-runtimes.md)
+  * [Lambda Runtimes](runtimes/runtimes-matrix/lambda-available-runtimes.md)
 * [Hybridless registry](runtimes/hybridless-registry.md)
 * [Extending](runtimes/extending.md)
 
