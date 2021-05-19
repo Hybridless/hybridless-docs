@@ -56,7 +56,7 @@
 
 Hybridless uses the following images for the languages and versions specified above.
 
-{% hint style="warning" %}
+{% hint style="info" %}
 You are not required to use the following docker files \(`dockerFile` prop of a function event\) if you are using the standard runtimes, however, if you want to customize nodejs10 runtime, for example, to have FFMPEG, you could use the following base nodejs10 image as the base and install what you need, but keeping the same runtime basics from what is automatically done by hybridless. 
 {% endhint %}
 
@@ -110,6 +110,30 @@ ENTRYPOINT EXEC -e $ENTRYPOINT -e $ENTRYPOINT_FUNC
 ```
 {% endtab %}
 {% endtabs %}
+
+
+
+### Concept
+
+Process runtimes are basically entrypoints to long-life executables that should only exit when something wrong happens. This process initiated by executing the executable is in the foreground and the monitored process. So forking or spawning new child processes is possible as long the root process is not terminated. 
+
+{% hint style="warning" %}
+Terminated processes will generally result in ECS trying to initiate a new task, keeping it on a loop indefinitely.
+{% endhint %}
+
+
+
+#### Exposed Ivars
+
+* `ENTRYPOINT` - The file relative to the working directory that should be executed. 
+* `ENTRYPOINT_FUNC` - The function inside the entrypoint file that should be executed.
+* `STAGE` - Which stage this task is running on.
+* `AWS_REGION` - In which AWS region we are.
+* `AWS_ACCOUNT_ID` - Which account this task is deployed.
+* `NEW_RELIC_ENABLED` - Indicates if new relic monitoring framework should be enabled.
+* `NEW_RELIC_APP_NAME` - New relic application display name.
+* `NEW_RELIC_LICENSE_KEY`- New relic license key.
+* `NEW_RELIC_NO_CONFIG_FILE` - Indicates to new relic SDK to use license key from environment ivars.
 
 
 

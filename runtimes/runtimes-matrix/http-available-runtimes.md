@@ -81,7 +81,7 @@
 
 Hybridless uses the following images for the languages and versions specified above.
 
-{% hint style="warning" %}
+{% hint style="info" %}
 You are not required to use the following docker files \(`dockerFile` prop of a function event\) if you are using the standard runtimes, however, if you want to customize nodejs10 runtime, for example, to have FFMPEG, you could use the following base nodejs10 image as the base and install what you need, but keeping the same runtime basics from what is automatically done by hybridless. 
 {% endhint %}
 
@@ -129,6 +129,10 @@ const runtimeInstance = new Runtime({
 runtimeInstance.start();
 ```
 {% endcode %}
+
+{% hint style="info" %}
+If you want to customize your `proxy.js` file or any behaviour of the nodejs httpd runtime, you can check the [runtime repository](https://github.com/Hybridless/runtime-nodejs-httpd) and its [documentation](https://github.com/Hybridless/runtime-nodejs-httpd#hybridless-nodejs-runtime-httpd-).
+{% endhint %}
 {% endtab %}
 
 {% tab title="Nodejs 13" %}
@@ -173,6 +177,10 @@ const runtimeInstance = new Runtime({
 runtimeInstance.start();
 ```
 {% endcode %}
+
+{% hint style="info" %}
+If you want to customize your `proxy.js` file or any behaviour of the nodejs httpd runtime, you can check the [runtime repository](https://github.com/Hybridless/runtime-nodejs-httpd) and its [documentation](https://github.com/Hybridless/runtime-nodejs-httpd#hybridless-nodejs-runtime-httpd-).
+{% endhint %}
 {% endtab %}
 
 {% tab title="PHP5" %}
@@ -220,22 +228,34 @@ COPY /app/ /app/
 {% endtab %}
 {% endtabs %}
 
+### 
+
 ### Concept
 
-Httpd runtimes are expected to have a plain HTTP socket opened and listening to the port exposed via`$PORT`environment. It also has some other [ivars exposed](http-available-runtimes.md#exposed-ivars), so your HTTP server can impose some constraints on the server-side and gracefully handle timeouts and accepted routes for example. 
+Httpd runtimes are expected to have a plain HTTP socket opened and listening to the port exposed via`$PORT`environment. It also has some other [ivars exposed](http-available-runtimes.md#exposed-ivars), so your HTTP server can impose some constraints on the server-side and gracefully handle timeouts for example. 
+
+Events will generally come from ALB and will be routed through load balancer listener rules. So most of the routing job is done for you, allowing only routes specified on the routes configuration to go through.
+
+
 
 #### Exposed Ivars
 
 * `PORT` - Which port should your listener be listening to.
-* `TIMEOUT` - Timeout that should be respected by your request; If behind a load balancer request shall be dropped a second later if you don't timeout by yourself. 
-* `ENTRYPOINT` - 
-* `ENTRYPOINT_FUNC`
+* `TIMEOUT` - Timeout that should be respected by your request; If behind a load balancer request shall be dropped a second later if you don't timeout by yourself. **In milliseconds, not seconds.**
+* `ENTRYPOINT` - The file relative to the working directory that should be executed. 
+* `ENTRYPOINT_FUNC` - The function inside the entrypoint file that should be executed.
+* `HYBRIDLESS_RUNTIME` - Indicates it's running on hybridless runtime and not in lambda for example.
+* `CORS` - Optionally, CORS structure from the configuration is exposed if available/specified.
+* `HEALTH_ROUTE` - Which route is specified as the health check route so you can make additional logic if you will.
+* `STAGE` - Which stage this task is running on.
+* `AWS_REGION` - In which AWS region we are.
+* `AWS_ACCOUNT_ID` - Which account this task is deployed.
+* `NEW_RELIC_ENABLED` - Indicates if new relic monitoring framework should be enabled.
+* `NEW_RELIC_APP_NAME` - New relic application display name.
+* `NEW_RELIC_LICENSE_KEY`- New relic license key.
+* `NEW_RELIC_NO_CONFIG_FILE` - Indicates to new relic SDK to use license key from environment ivars.
 
-#### Development
 
-Theoretically, the **entrypoint** \(file\) and **entrypoint function** \(function inside the file\) should point to one router function that will execute the proper function depending on the requested route. Having one even per route is insanely scalable and allows very precise tunning, but it can also very expensive in terms of cost and resource allocation.
-
-Generally having a stateless API that handles most of the light work routes could be as scalable as one route one event approach and allows you to start with a very minimal and costless solution and decide how to scale later.
 
 
 
