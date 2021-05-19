@@ -1,2 +1,115 @@
 # Process Available runtimes
 
+### Runtimes for [process](../../api-reference/function-reference/function-type-process.md)
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:center"><b>Language</b>
+      </th>
+      <th style="text-align:center"><b>Version</b>
+      </th>
+      <th style="text-align:center"><b>Hybridless Runtime</b>
+      </th>
+      <th style="text-align:center"><b>Details</b>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center"><b>NodeJS</b>
+      </td>
+      <td style="text-align:center">10.x</td>
+      <td style="text-align:center">X</td>
+      <td style="text-align:center">
+        <p></p>
+        <ul>
+          <li>Based on <a href="https://hub.docker.com/_/node?tab=tags&amp;page=1&amp;name=10-alpine">nodejs:10-alpine</a> image</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><b>NodeJS</b>
+      </td>
+      <td style="text-align:center">13.x</td>
+      <td style="text-align:center">X</td>
+      <td style="text-align:center">
+        <p></p>
+        <ul>
+          <li>Based on <a href="https://hub.docker.com/_/node?tab=tags&amp;page=1&amp;name=13-alpine">nodejs:13-alpine</a> image</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><b>Custom</b>
+      </td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">Can be based on any hybridless process runtimes or not.</td>
+    </tr>
+  </tbody>
+</table>
+
+### 
+
+### Runtime images for [process](../../api-reference/function-reference/function-type-process.md)
+
+Hybridless uses the following images for the languages and versions specified above.
+
+{% hint style="warning" %}
+You are not required to use the following docker files \(`dockerFile` prop of a function event\) if you are using the standard runtimes, however, if you want to customize nodejs10 runtime, for example, to have FFMPEG, you could use the following base nodejs10 image as the base and install what you need, but keeping the same runtime basics from what is automatically done by hybridless. 
+{% endhint %}
+
+{% tabs %}
+{% tab title="Nodejs 10" %}
+{% code title="Dockerfile" %}
+```text
+FROM ghcr.io/hybridless/node:10-alpine
+
+# Copy files
+COPY /usr/src/app/ /usr/src/app/
+
+# Set the working directory
+WORKDIR /usr/src/app
+
+# Run the specified command within the container.
+ENTRYPOINT node -e "require('./$ENTRYPOINT').$ENTRYPOINT_FUNC()"
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="Nodejs 13" %}
+{% code title="Dockerfile" %}
+```
+FROM ghcr.io/hybridless/node:13-alpine
+
+# Copy files
+COPY /usr/src/app/ /usr/src/app/
+
+# Set the working directory
+WORKDIR /usr/src/app
+
+# Run the specified command within the container.
+ENTRYPOINT node -e "require('./$ENTRYPOINT').$ENTRYPOINT_FUNC()"
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="Custom" %}
+```
+FROM ANY_IMAGE
+
+# Copy files
+COPY /usr/src/app/ /usr/src/app/
+
+# Set the working directory
+WORKDIR /usr/src/app
+
+# Run the specified command within the container.
+ENTRYPOINT EXEC -e $ENTRYPOINT -e $ENTRYPOINT_FUNC
+```
+{% endtab %}
+{% endtabs %}
+
+
+

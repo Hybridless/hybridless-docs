@@ -82,7 +82,7 @@
 Hybridless uses the following images for the languages and versions specified above.
 
 {% hint style="warning" %}
-You are not required to use the following docker files \(`dockerFile` prop of a function event\) if you are using the standard runtimes, however, if you want to customize nodejs10 runtime for example, to have FFMPEG, you could use the following base nodejs10 image as the base and install what you need, but keeping the same runtime basics from what is automatically done by hybridless. 
+You are not required to use the following docker files \(`dockerFile` prop of a function event\) if you are using the standard runtimes, however, if you want to customize nodejs10 runtime, for example, to have FFMPEG, you could use the following base nodejs10 image as the base and install what you need, but keeping the same runtime basics from what is automatically done by hybridless. 
 {% endhint %}
 
 {% tabs %}
@@ -96,6 +96,7 @@ COPY /usr/src/app/ /usr/src/app/
 COPY proxy.js /usr/src/httpd/proxy.js
 
 ## CUSTOMIZE YOUR CONTAINER HERE
+RUN yum install ffmpeg # :()
 
 # Set the working directory
 WORKDIR /usr/src/app
@@ -218,4 +219,23 @@ COPY /app/ /app/
 ```
 {% endtab %}
 {% endtabs %}
+
+### Concept
+
+Httpd runtimes are expected to have a plain HTTP socket opened and listening to the port exposed via`$PORT`environment. It also has some other [ivars exposed](http-available-runtimes.md#exposed-ivars), so your HTTP server can impose some constraints on the server-side and gracefully handle timeouts and accepted routes for example. 
+
+#### Exposed Ivars
+
+* `PORT` - Which port should your listener be listening to.
+* `TIMEOUT` - Timeout that should be respected by your request; If behind a load balancer request shall be dropped a second later if you don't timeout by yourself. 
+* `ENTRYPOINT` - 
+* `ENTRYPOINT_FUNC`
+
+#### Development
+
+Theoretically, the **entrypoint** \(file\) and **entrypoint function** \(function inside the file\) should point to one router function that will execute the proper function depending on the requested route. Having one even per route is insanely scalable and allows very precise tunning, but it can also very expensive in terms of cost and resource allocation.
+
+Generally having a stateless API that handles most of the light work routes could be as scalable as one route one event approach and allows you to start with a very minimal and costless solution and decide how to scale later.
+
+
 

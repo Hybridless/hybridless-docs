@@ -4,3 +4,11 @@ Runtimes are used at build time to **containerize** your **code** plus the requi
 
 It allows developers to specify defined runtimes for quick and easy usage \(also most common\), so we can jump right away to code, without needing to write resource-specific code, and also allowing to build hybrid environments and scale as your need.
 
+\[WIP\]
+
+
+
+### More on Runtimes? 
+
+
+

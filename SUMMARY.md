@@ -21,14 +21,14 @@
 
 ## Deployments
 
-* [Build](deployments/build.md)
+* [Deployment - Builds](deployments/build.md)
 * [Registry Management](deployments/registry-management.md)
 * [Service Load Balancer and VPC Management](deployments/service-load-balancer-and-vpc-management.md)
 * [Deployment failures](deployments/deployment-failures.md)
 
 ## Runtimes
 
-* [Concept](runtimes/concept.md)
+* [Runtimes In-Depth](runtimes/concept.md)
 * [Runtimes Matrix](runtimes/runtimes-matrix/README.md)
   * [Httpd Available runtimes](runtimes/runtimes-matrix/http-available-runtimes.md)
   * [Process Available runtimes](runtimes/runtimes-matrix/process-available-runtimes.md)

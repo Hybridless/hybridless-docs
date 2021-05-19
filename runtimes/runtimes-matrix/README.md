@@ -12,3 +12,7 @@ The following event types and Runtimes are supported out of the box. More langua
 | php7 | X | - | - | - | - |
 | container | X | X | X | X | - |
 
+ _\*_ Lambda does use AWS internal runtimes. To check the available runtimes, check [here](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html).
+
+### 
+
