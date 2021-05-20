@@ -1,10 +1,10 @@
 # Runtimes In-Depth
 
-Runtimes are basically a set of instructions on how to build and run your code \(or the packaged application\) on a specific container. It's mainly composed by a Dockerfile that builds an image that will follow that specific event type rules. 
+Runtimes are basically a set of instructions on how to build and run your code \(or packaged applications\) by generating an executable docker image that will run ECS tasks or lambdas. It's mainly composed by a Dockerfile that builds an image that should follow that specific event type life cycle. 
 
-Further more, programming languages runtimes have additional logic to invoke certain files and specific functions by generally simulating lambda environment or long-life tasks, so development can be done agnostically of where you will actually run your code.
+Further more, programming languages runtimes have additional logic to invoke certain files and specific functions by generally simulating lambda environment on long-life tasks, so development can be done agnostically of where you will actually run your code.
 
-It's a cloned concept from AWS [lambda runtimes](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html) and also a well know concept from PAAS companies as Heroku [buildpacks](https://devcenter.heroku.com/articles/buildpacks), but way more powerful and customizable, because it allows you to use any operating system by using any base docker image available out there, and installing, building and managing what will be deployed in almost any matter.
+This concept is not new a have being seen on AWS with [lambda runtimes](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html) and also on PAASs like Heroku with [buildpacks](https://devcenter.heroku.com/articles/buildpacks), but Hybridless builds an additional layer to facilitate the deployment and maintenance of these applications and also allowing in-depth customization and deploying applications of almost any matter and requirements.
 
 This whole concept is one of the key components of Hybridless and also one of the most appealing features, because it aggregates lots of builds steps that are being done for the majority of companies and developers out there in a simple concept that can can be used by beginners to experts and be customized without much limitations, other than the ones imposed by the cloud providers.
 
