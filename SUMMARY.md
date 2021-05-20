@@ -16,12 +16,17 @@
 
 * [Clusters](concepts/clusters.md)
 * [Service Load Balancer and VPC](concepts/service-load-balancer-and-vpc.md)
-* [Hybrid Functions](concepts/hybrid-functions.md)
+* [Hybrid Functions](concepts/hybrid-functions/README.md)
+  * [Event Types](concepts/hybrid-functions/event-types.md)
 * [Runtimes](concepts/runtimes.md)
 
 ## Deployments
 
-* [Deployment - Builds](deployments/build.md)
+* [Deployment](deployments/build/README.md)
+  * [Build](deployments/build/build.md)
+  * [Push](deployments/build/push.md)
+  * [Deploy](deployments/build/deploy.md)
+  * [Rollbacks](deployments/build/rollbacks.md)
 * [Registry Management](deployments/registry-management.md)
 * [Service Load Balancer and VPC Management](deployments/service-load-balancer-and-vpc-management.md)
 * [Deployment failures](deployments/deployment-failures.md)
@@ -36,7 +41,9 @@
   * [LambdaContainer Runtimes](runtimes/runtimes-matrix/lambdacontainer-available-runtimes.md)
   * [Lambda Runtimes](runtimes/runtimes-matrix/lambda-available-runtimes.md)
 * [Hybridless registry](runtimes/hybridless-registry.md)
-* [Extending](runtimes/extending.md)
+* [Extending](runtimes/extending/README.md)
+  * [Custom Runtimes](runtimes/extending/custom-runtimes.md)
+  * [Existing Runtimes](runtimes/extending/existing-runtimes.md)
 
 ## API Reference
 

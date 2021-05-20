@@ -17,6 +17,11 @@ hybridless:
       handler: src/handler.handler
       memory: 512
       timeout: 60
+      vpc:
+        cidr: 10.0.0.0/16
+        subnets:
+          - 10.0.0.0/24
+          - 10.0.1.0/24
       events:
         - eventType: httpd
           runtime: nodejs13
@@ -48,7 +53,7 @@ custom:
     includeModules: true
 hybridless:
   functions:
-    HTTP:
+    ClusterName:
       vpc:
         cidr: 10.0.0.0/16
         subnets:
@@ -67,7 +72,7 @@ hybridless:
 {% endtab %}
 {% endtabs %}
 
-Simple as that we would have a definition capable of running an application load balancer, with an ECS cluster with 2 tasks inside a`nodejs13`runtime as we would be running on lambda by just deploying your application as you would be doing on serverless. \(Can't wait to deploy? Go to [deployment section](../deployments/build.md)\)
+Simple as that we would have a definition capable of running an application load balancer, with an ECS cluster with 2 tasks inside a`nodejs13`runtime as we would be running on lambda by just deploying your application as you would be doing on serverless. \(Can't wait to deploy? Go to [deployment section](../deployments/build/)\)
 
 And because we use a function-first approach and the deployment/resource strategy is defined at the event level, bare minimum would be required to switch this function lambda \(serverless\) or even add a specific route on lambda \(by using a different endpoint\), by adding another event of type [`lambda`](../api-reference/function-reference/function-type-lambda.md) or any other event type. \(Learn more about [event types](../api-reference/function-reference/types.md)\) 
 

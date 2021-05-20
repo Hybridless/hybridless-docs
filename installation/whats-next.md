@@ -8,7 +8,7 @@ The possibilities are truly infinite, so enjoy it and make good usage! [🤓](ht
 
 #### Learn key concepts
 
-{% page-ref page="../concepts/hybrid-functions.md" %}
+{% page-ref page="../concepts/hybrid-functions/" %}
 
 #### Deployments
 
