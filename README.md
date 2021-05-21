@@ -15,11 +15,11 @@ description: Hybrid function-driven development framework
 
 ## Hybrid function-driven development framework
 
-Hybridless is a plug-in on top of serverless that allows you to have a hybrid platform defined on your serverless definition that shares the same code base and has minimal difference between the lambda and long-running functions.
+Hybridless is a plug-in on **top of serverless** that makes lambda functions and ECS tasks equivalents by automatically managing function runtimes, container packing, deployment and configurations, allowing you to have applications that run on lambdas and ECS containers, within the same code base and without any differences. Additionally, it shortcuts SNS, SQS, dynamic streams and lambda containers \(available by serverless\) so everything is managed in a similar manner and the developer can focus on the code.
 
-It makes lambda functions and ECS tasks equivalents by managing the runtimes, container packing, deployment and configurations, allowing you to have applications that run on lambdas and ECS containers, within the same code base and without any differences. Additionally, it shortcuts SNS, SQS, dynamic streams and lambda containers so everything is managed in a similar manner and the developer can focus on the code.
+Hybridless implements the concept of runtimes to allow agnostic code to be deployed on serverless and server based tasks without worrying about how where the code will be deployed or how to scale things on the future. Runtime allow completely customization so a broad variety of application can be deployed with it, not only code based suited tasks, but also different types of binaries and p2p applications.
 
-Hybridless implements the Concept of runtimes/buildpacks to allow developers to quickly jump into code without worrying about how to deploy the code. All the complex application packing, runtimes, cluster configurations, load balancers and security rules can be handled for you.
+One important aspect is that all the resources required to run these simply defined but very complex applications on the cloud are automatically defined for you, so even if you never heard an Application Load Balancer or have shivers when VPCs are required, you will be able to deploy very complex, scalable and secure application on the cloud without any hassle.
 
 
 

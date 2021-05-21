@@ -9,7 +9,7 @@
       </th>
       <th style="text-align:center"><b>Version</b>
       </th>
-      <th style="text-align:center"><b>Hybridless Runtime</b>
+      <th style="text-align:center"><b>Built-In Runtime</b>
       </th>
       <th style="text-align:center"><b>Details</b>
       </th>
@@ -20,7 +20,7 @@
       <td style="text-align:center"><b>NodeJS</b>
       </td>
       <td style="text-align:center">10.x</td>
-      <td style="text-align:center">X</td>
+      <td style="text-align:center">nodejs10</td>
       <td style="text-align:center">
         <ul>
           <li>Uses <a href="https://github.com/Hybridless/runtime-nodejs-httpd">hybridess nodejs runtime</a>
@@ -33,7 +33,7 @@
       <td style="text-align:center"><b>NodeJS</b>
       </td>
       <td style="text-align:center">13.x</td>
-      <td style="text-align:center">X</td>
+      <td style="text-align:center">nodejs13</td>
       <td style="text-align:center">
         <p></p>
         <ul>
@@ -47,7 +47,7 @@
       <td style="text-align:center"><b>PHP</b>
       </td>
       <td style="text-align:center">5</td>
-      <td style="text-align:center">X</td>
+      <td style="text-align:center">php5</td>
       <td style="text-align:center">
         <ul>
           <li>Based on <a href="https://hub.docker.com/r/webdevops/php-nginx/tags?page=1&amp;ordering=last_updated&amp;name=alpine-php5">webdevops/php-nginx:alpine-php5</a> image</li>
@@ -58,7 +58,7 @@
       <td style="text-align:center"><b>PHP</b>
       </td>
       <td style="text-align:center">7</td>
-      <td style="text-align:center">X</td>
+      <td style="text-align:center">php7</td>
       <td style="text-align:center">
         <ul>
           <li>Based on <a href="https://hub.docker.com/r/webdevops/php-nginx/tags?page=1&amp;ordering=last_updated&amp;name=alpine-php7">webdevops/php-nginx:alpine-php7</a> image</li>
@@ -69,7 +69,7 @@
       <td style="text-align:center"><b>Custom</b>
       </td>
       <td style="text-align:center">-</td>
-      <td style="text-align:center">-</td>
+      <td style="text-align:center">container</td>
       <td style="text-align:center">Can be based on any hybridless httpd runtimes or not.</td>
     </tr>
   </tbody>

@@ -9,7 +9,7 @@
       </th>
       <th style="text-align:center"><b>Version</b>
       </th>
-      <th style="text-align:center"><b>Hybridless Runtime</b>
+      <th style="text-align:center"><b>Built-In Runtime</b>
       </th>
       <th style="text-align:center"><b>Details</b>
       </th>
@@ -20,7 +20,7 @@
       <td style="text-align:center"><b>NodeJS</b>
       </td>
       <td style="text-align:center">10.x</td>
-      <td style="text-align:center">X</td>
+      <td style="text-align:center">nodejs10</td>
       <td style="text-align:center">
         <p></p>
         <ul>
@@ -32,7 +32,7 @@
       <td style="text-align:center"><b>NodeJS</b>
       </td>
       <td style="text-align:center">13.x</td>
-      <td style="text-align:center">X</td>
+      <td style="text-align:center">nodejs13</td>
       <td style="text-align:center">
         <p></p>
         <ul>
@@ -44,7 +44,7 @@
       <td style="text-align:center"><b>Custom</b>
       </td>
       <td style="text-align:center">-</td>
-      <td style="text-align:center">-</td>
+      <td style="text-align:center">container</td>
       <td style="text-align:center">Can be based on any hybridless process runtimes or not.</td>
     </tr>
   </tbody>
