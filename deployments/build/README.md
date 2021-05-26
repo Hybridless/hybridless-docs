@@ -4,7 +4,7 @@ Deployments are the most fundamental part of Hybridless because it's the only ti
 
 If you are new to **serverless framework**, or never heard about AWS Cloud Formation, it's important to remind the importance of this layer, because it's the interface and the controller of all the resources defined on your serverless + hybridless definition and how they are deployed. 
 
-CF has a very extense and verbose set of objects so you can define and configure almost any AWS resource available out there. In the end Hybridless and Serverless together transcribe a very simple definition language to a very complex set of AWS objects, generating one big JSON file on pure Cloud Formation format that will used by Serverless to invoke a Cloud Formation Deployment. Cloud Formation will check what have changed from previous deployment and make the appropriated actions without erasing unneeded resources or modifying anything else than whats needed.
+CF has a very extense and verbose set of objects so you can define and configure almost any AWS resource available out there. In the end, Hybridless and Serverless together transcribe a very simple definition language to a very complex set of AWS objects, generating one big JSON file on pure Cloud Formation format that will used by Serverless to invoke a Cloud Formation Deployment. Cloud Formation will check what have changed from previous deployment and make the appropriated actions without erasing unneeded resources or modifying anything else than whats needed.
 
 Hybridless bring another set of functionalities that **weren't available** by **Serverless** and neither **Cloud Formation**, which is allowing dynamic containers definitions to be built, managed and deployed on the surrounding of the Cloud Formation lifecycle, granting the ability of having code that is compiled, containerized, deployed and used by AWS resources defined on Cloud Formation.
 
@@ -19,4 +19,6 @@ have docker enabled..
 ### Recommended Approach
 
 buildspec...
+
+build.sh
 

@@ -24,12 +24,10 @@
 
 * [Deployment](deployments/build/README.md)
   * [Build](deployments/build/build.md)
-  * [Push](deployments/build/push.md)
-  * [Deploy](deployments/build/deploy.md)
+  * [Push & Deploy](deployments/build/push.md)
   * [Rollbacks](deployments/build/rollbacks.md)
 * [Registry Management](deployments/registry-management.md)
 * [Service Load Balancer and VPC Management](deployments/service-load-balancer-and-vpc-management.md)
-* [Deployment failures](deployments/deployment-failures.md)
 
 ## Runtimes
 
@@ -49,8 +47,9 @@
 
 * [General Reference](api-reference/general-reference.md)
 * [Plugin Reference](api-reference/plugin-reference.md)
-* [Cluster Reference](api-reference/cluster-reference.md)
-* [Function Reference](api-reference/function-reference/README.md)
+* [Function Reference](api-reference/cluster-reference.md)
+* [Event Reference](api-reference/function-reference/README.md)
+  * [Untitled](api-reference/function-reference/untitled.md)
   * [Overview](api-reference/function-reference/overview.md)
   * [Function Types](api-reference/function-reference/types.md)
   * [Function Type - httpd](api-reference/function-reference/function-type-httpd.md)

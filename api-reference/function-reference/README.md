@@ -1,2 +1,2 @@
-# Function Reference
+# Event Reference
 

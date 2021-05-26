@@ -1,2 +1,2 @@
-# Cluster Reference
+# Function Reference
 
