@@ -49,7 +49,6 @@
 * [Plugin Reference](api-reference/plugin-reference.md)
 * [Function Reference](api-reference/cluster-reference.md)
 * [Event Reference](api-reference/function-reference/README.md)
-  * [Untitled](api-reference/function-reference/untitled.md)
   * [Overview](api-reference/function-reference/overview.md)
   * [Function Types](api-reference/function-reference/types.md)
   * [Function Type - httpd](api-reference/function-reference/function-type-httpd.md)
