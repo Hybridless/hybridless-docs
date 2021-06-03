@@ -6,7 +6,7 @@ Examples are maintained on a separate repository and should be up-to-date with a
 | :--- | :--- |
 | Minimal | [https://github.com/hybridless/examples/tree/master/example-simple](https://github.com/Hybridless/examples/tree/master/example-simple) |
 | Webpack | [https://github.com/hybridless/examples/tree/master/example-webpack](https://github.com/Hybridless/examples/tree/master/example-webpack) |
-| Hybrid clusters |  |
+| Hybrid clusters | [https://github.com/hybridless/examples/tree/master/example-hybrid-cluster](https://github.com/hybridless/examples/tree/master/example-hybrid-cluster) |
 | Processes |  |
 | Containers |  |
 | Custom Runtimes |  |

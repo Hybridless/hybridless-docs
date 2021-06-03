@@ -15,7 +15,7 @@ hybridless:
   functions:
     ClusterName:
       handler: src/handler.handler
-      memory: 512
+      memory: 1024
       timeout: 60
       vpc:
         cidr: 10.0.0.0/16
@@ -60,7 +60,7 @@ hybridless:
           - 10.0.0.0/24
           - 10.0.1.0/24
       handler: src/handler.handler
-      memory: 512
+      memory: 1024
       timeout: 60
       events:
         - eventType: httpd
