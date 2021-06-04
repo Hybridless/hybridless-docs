@@ -31,9 +31,9 @@
           subnets: string[];
         } | { //Optional ivars to dictate if will use existing VPC and subnets specified
           vpcId: string;
-          securityGroupIds: string[];
-          subnetIds: string[];
-          albSubnetIds?: string[];
+          securityGroupIds: string[] | object;
+          subnetIds: string[] | object;
+          albSubnetIds?: string[] | object;
         };
         //high order props (can be overwritten at event level)
         timeout?: number;

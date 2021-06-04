@@ -4,7 +4,7 @@ Hybridless is directly coupled with the [`Serverless`](https://www.serverless.co
 
 Although have knowledge of **Serverless, AWS, Cloud Formation and Docker** is not required, is highly recommended that would know at least the main concepts so you know what's happening behind the hood and also have the ability to customize things based on your needs.
 
-There are not requirements to start using Hybridless today. The following [Setup](untitled-1.md) tutorial will guide you to have an working example of Hybridless so you can start hacking :\) 
+There are not requirements to start using Hybridless today. The following [Setup](untitled-1.md) tutorial will guide you to have a working example of Hybridless so you can start hacking :\) 
 
-If you are not in the mood of explanations and tutorial, you can jump to [examples](examples.md) and grab a working example right away! 
+If you are not in the mood for explanations and tutorial, you can jump to [examples](examples.md) and grab a working example right away! 
 
