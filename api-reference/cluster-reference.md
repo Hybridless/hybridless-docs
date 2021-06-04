@@ -75,25 +75,9 @@ ecsIngressSecGroupId: sg-0700eee00ee0ee0I
 * **Default:** `false` \(does respect the account settings\)
 * _Optional_
 
-        Examples:
+        Example:
 
-{% tabs %}
-{% tab title="Import" %}
 ```yaml
-hybridless:
-    functions:
-        - ${file(config/funcs.yml)}
-        - ${file(config/funcs_two.yml)}
+enableContainerInsights: true
 ```
-
-{% code title="config/funcs.yml Or config/funcs\_two.yml.." %}
-```yaml
-FirstFunction:
-    ....
-SecondFunction:
-    ....
-```
-{% endcode %}
-{% endtab %}
-{% endtabs %}
 
