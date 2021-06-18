@@ -152,12 +152,13 @@
           s3bucketExisting?: boolean;
           s3rules?: { [key in ('prefix'|'suffix')]?: string }[];
             //Protocol: dynamostreams
-          prototocolArn?: any; 
+          protocolArn?: any; 
+          protocolArn?: any; 
             //Protocol: scheduler
           schedulerRate?: string; 
           schedulerInput?: string | any; 
             //Protocol: sns
-          prototocolArn?: any; 
+          protocolArn?: any; 
           filterPolicy?: object;
             //Protocol: sqs
           prototocolArn?: any; 
