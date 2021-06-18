@@ -32,7 +32,7 @@ hybridless:
 ```
 
 {% hint style="success" %}
-For the lack of simplicity, we are using an inline function definition, but it's highly recommended to **NOT** use this form and use the [import form instead.](plugin-reference.md#functions)
+For the lack of simplicity, we are using an inline function definition, but it's highly recommended to **NOT** use this form but use the [import form instead.](plugin-reference.md#functions)
 {% endhint %}
 
 ## Parameters
@@ -147,7 +147,7 @@ You can this value to `0` if you want to disable it. But be aware that time limi
     * `vpcId`
     * `securityGroupIds`
     * `subnetIds`
-    * `albSubnetIds` \(optional, overwrites subnetIds\)
+    * `albSubnetIds` \(optional, overwrites `subnetIds`\)
 * **Default:** `null` \(no default configuration\)
 * _Optional, **but** **required** for **ECS based event** as `process` , `httpd` and `scheduledTask`._
 
@@ -216,6 +216,93 @@ vpc:
 * **Default:** `null` \(no default configuration\)
 * _Optional, but required if specifying`cidr`property. \(Plugin-Managed VPC\)_
 * Examples on [`vpc`](cluster-reference.md#vpc) 
+
+
+
+### `vpc.vpcId`
+
+* **Description:** Used for **Self-Managed VPC** configuration to specify the vpc Id of which vpc the events should be placed in.
+* **Value:** vpc Id as a string or object \(intrinsic function\). `vpc-1234567890abcdef0`
+* **Default:** `null` \(no default configuration\)
+* _Optional, but required if_ using **Self-Managed VPC**_._
+* Examples on [`vpc`](cluster-reference.md#vpc) 
+
+
+
+### `vpc.securityGroupIds`
+
+* **Description:** Which security groups your tasks and lambdas should use on a **Self-Managed VPC.**
+* **Value:** array of security group id strings or any sort of intrinsic function that returns an array of security group ids. `sg-94b3a1f6`
+* **Default:** `null` \(no default configuration\)
+* _Optional, but required if_ using **Self-Managed VPC**_._
+* Examples on [`vpc`](cluster-reference.md#vpc) 
+
+
+
+### `vpc.subnetIds`
+
+* **Description:** Which subnets your tasks, lambdas and Load Balancer should be placed in on a **Self-Managed VPC.**
+* **Value:** array of subnet id strings or any sort of intrinsic function that returns an array of subnet ids. `subnet-b46032ec`
+* **Default:** `null` \(no default configuration\)
+* _Optional, but required if_ using **Self-Managed VPC**_._
+* Examples on [`vpc`](cluster-reference.md#vpc) 
+
+
+
+### `vpc.albSubnetIds`
+
+* **Description:** Which subnets your self created load balancer should be placed in on a **Self-Managed VPC,** takes precende over `subnetIds`.
+* **Value:** array of subnet id strings or any sort of intrinsic function that returns an array of subnet ids. `subnet-b46032ec`
+* **Default:** `null` \(no default configuration\)
+* _Optional_
+* Examples on [`vpc`](cluster-reference.md#vpc) 
+
+
+
+### `timeout`
+
+* **Description:** Default timeout to be used if no `timeout` is specified on the event level.
+* **Value:** Integer, value in seconds. `10`
+* **Default:**  `30`
+* _Optional_
+
+    Example:
+
+```yaml
+timeout: 60
+```
+
+
+
+### `handler`
+
+* **Description:** Default handler to be used across event if not specified at event level.
+* **Value:** String value with the relative path to your file and the function usually on the following notation `src/path/file.handler`
+* **Default:**  No default value
+* **Required**
+
+    Example:
+
+```yaml
+handler: arc/path/file.handler
+```
+
+
+
+### `memory`
+
+* **Description:** Default memory size your tasks and lambdas functions will have. Event level `memory` property will take precendece over this. Also is using mixed events \(serverless and container\) you might need to specify this configuration per event due size contrains in each event type. 
+  * For `lambda` and `lambdaContainer` you should use the [lambda defined memory sizes.](https://docs.aws.amazon.com/lambda/latest/dg/configuration-memory.html)
+  * Other type of events, if not placed on EC2, it should respect [fargate memory/cpu constrains](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html).
+* **Value:** Integer, value in MBs. `512`
+* **Default:**  Defaults to `1024` MB.  
+* _Optional_
+
+    Example:
+
+```yaml
+memory: 2048
+```
 
 
 
