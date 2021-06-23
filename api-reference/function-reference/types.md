@@ -1,2 +1,2 @@
-# Function Types
+# Event Types
 

@@ -29,6 +29,7 @@ hybridless:
           timeout?: number;
           handler: string; 
           memory?: number; //defaults to 1024
+          events?: object;
 ```
 
 {% hint style="success" %}
@@ -303,6 +304,15 @@ handler: arc/path/file.handler
 ```yaml
 memory: 2048
 ```
+
+
+
+### `events`
+
+* **Description:** Events are the core property of a function, they are required if you want your function to be deployed. Logically each event is deployed as a lambda function or event an ECS task but is virtually bound to receive that event. [Check more about events and what event is suited for your use case.](function-reference/)
+* **Value:** Array of event objects.
+* **Default:**  null
+* _Optional, but required if your function is being deployed. Otherwise, it is an empty definition if not initialization if we can say that._
 
 
 
