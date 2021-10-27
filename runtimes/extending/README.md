@@ -12,9 +12,11 @@ Creating new runtimes are tailored for unique behaviours as running an internal 
 
 If you created a cool runtime or have added support for a new language, we will be more than happy in receiving a pull request from you on GitHub.
 
-{% page-ref page="custom-runtimes.md" %}
+{% content-ref url="custom-runtimes.md" %}
+[custom-runtimes.md](custom-runtimes.md)
+{% endcontent-ref %}
 
-{% page-ref page="existing-runtimes.md" %}
-
-
+{% content-ref url="existing-runtimes.md" %}
+[existing-runtimes.md](existing-runtimes.md)
+{% endcontent-ref %}
 

@@ -96,4 +96,3 @@ runtime: string; //Please, check runtime matrix based on the eventTypy you are u
           healthCheckRoute?: string; //required to enable health checks
         }[];
 ```
-

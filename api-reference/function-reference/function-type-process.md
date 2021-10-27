@@ -33,4 +33,3 @@
           daemonType?: boolean; //indicates if we shall we can one task on each instance of the cluster
 
 ```
-

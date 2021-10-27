@@ -27,4 +27,3 @@
           cognitoUserPoolArn: any;
           cognitoTrigger: string;
 ```
-

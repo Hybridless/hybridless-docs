@@ -36,4 +36,3 @@
           schedulerRate: string;
           schedulerInput?: string | object;
 ```
-

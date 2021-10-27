@@ -1,6 +1,6 @@
 # Runtimes In-Depth
 
-Runtimes are basically a set of instructions on how to build and run your code \(or packaged applications\) by generating an executable docker image that will run ECS tasks or lambdas. It's mainly composed by a Dockerfile that builds an image that should follow that specific event type life cycle. 
+Runtimes are basically a set of instructions on how to build and run your code (or packaged applications) by generating an executable docker image that will run ECS tasks or lambdas. It's mainly composed by a Dockerfile that builds an image that should follow that specific event type life cycle.&#x20;
 
 Further more, programming languages runtimes have additional logic to invoke certain files and specific functions by generally simulating lambda environment on long-life tasks, so development can be done agnostically of where you will actually run your code.
 
@@ -10,24 +10,24 @@ This whole concept is one of the key components of Hybridless and also one of th
 
 Also, as today, the plugin is only available and compatible with AWS, but there are no barriers to transverse this concept between other provider on the future.
 
-### 
+###
 
 ### Runtime Lifecycle
 
-As a good explanatory example, bellow is described the **key runtime steps** on the **packing**, **building**, and others til the whole execution of a  [`httpd`](../api-reference/function-reference/function-type-httpd.md) **event type** using a `nodejs13` **runtime** is completed. 
+As a good explanatory example, bellow is described the** key runtime steps** on the **packing**, **building**, and others til the whole execution of a  [`httpd`](../api-reference/function-reference/function-type-httpd.md) **event type** using a `nodejs13` **runtime** is completed.&#x20;
 
 * Hybridless detects this event requires a Docker repository to host the final image. ECR repository is auto created if not existing.
 * Hybridless detects you are using `nodejs` runtime, enables webpack/babel and **compile your code** if webpack option is not disabled.
 * Docker **image build directory** is **prepared** by:
   * **Copying** the built-in **Dockerfile** or specified custom Dockerfile.
-  * **Copying** the **application code** \(compile or not\).
+  * **Copying** the **application code** (compile or not).
   * Optionally, specified additional docker files will be copied last.
-* **Docker Image** is **built** and tagged locally. 
+* **Docker Image** is **built** and tagged locally.&#x20;
   * Base image is official `nodejs-13-alpine` from [Hybridless registry](hybridless-registry.md).
-  * **Files** listed above are **copied** to the image.
+  * **Files** listed above are **copied **to the image.
   * **Hybridless lambda nodejs runtime** is **installed**.
   * Entrypoint is created pointing to the lambda runtime, but specifying the actual file and function that needs to be executed.
-* **Deployment** happens \(This is very well explained on [Deployment section](../deployments/build/)\)
+* **Deployment** happens (This is very well explained on [Deployment section](../deployments/build/))
 * **Task** is **initiated**.
   * Hybridless lambda nodejs runtime is executed and open a port on the specified port.
 * **Requests comes** from internet.
@@ -37,12 +37,11 @@ As a good explanatory example, bellow is described the **key runtime steps** on 
 You can probably notice, this is nothing different than what we have been seen in the last 10 years but everything layered into customizable layers to improve reusability, reduce the complexity and cover a wide variety of applications and services. But also keeping it simple and with built-in types for the most common usages.
 
 {% hint style="warning" %}
-Note to the **difference between** a **Hybridless Runtime** \(this whole section is about\) and what we have called on the example above as `Hybridless lambda nodejs runtime`, which is a nodejs package that opens a http socket to listen for incoming requests and executes you function with the same context as Lambda would do.
+Note to the **difference between** a **Hybridless Runtime** (this whole section is about) and what we have called on the example above as `Hybridless lambda nodejs runtime`, which is a nodejs package that opens a http socket to listen for incoming requests and executes you function with the same context as Lambda would do.
 {% endhint %}
 
-### 
+###
 
 ### Runtimes Registry
 
-For now, there are limited number of built-in runtimes, and more and more are being added each week. However Hybridless will reserve built-in runtimes for the most common usages and undeniable plans for Runtimes registry are very plausible and might be right under the corner. 🤔 
-
+For now, there are limited number of built-in runtimes, and more and more are being added each week. However Hybridless will reserve built-in runtimes for the most common usages and undeniable plans for Runtimes registry are very plausible and might be right under the corner. :thinking:&#x20;

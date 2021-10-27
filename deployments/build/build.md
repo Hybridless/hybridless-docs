@@ -10,16 +10,16 @@ As an optional first step, Hybridless will check if any ECR repository for this 
 
 Code compilation is only needed and supported for Javascript objects that have `webpack` enabled.
 
-You can customize you webpack config as needed and have Typescript enabled for example or just have ES6 code compiled through babel. 
+You can customize you webpack config as needed and have Typescript enabled for example or just have ES6 code compiled through babel.&#x20;
 
 ### Runtime Packing
 
-Before building the function specific image, all resources needed for that to work are gathered and copied to a tmp folder. 
+Before building the function specific image, all resources needed for that to work are gathered and copied to a tmp folder.&#x20;
 
-* Dockerfile \(can be a custom \(user provided\) or Hybridless built-in image\)
+* Dockerfile (can be a custom (user provided) or Hybridless built-in image)
 * Compile or Raw Code
-* Internal Hybridless runtime files \(Healthcheck.php, Runtime initialize code\)
-* Additional files \(user defined\)
+* Internal Hybridless runtime files (Healthcheck.php, Runtime initialize code)
+* Additional files (user defined)
 
 ### Image Build
 
@@ -28,4 +28,3 @@ Standard Docker image build process happens from the defined Dockerfile and imag
 {% hint style="warning" %}
 f you are **not** using containerized builds, make sure to wipeout the images from the local registry after building.
 {% endhint %}
-

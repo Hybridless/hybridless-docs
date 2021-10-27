@@ -1,10 +1,10 @@
 # Configure Webpack
 
 {% hint style="warning" %}
-If you are not enabling webpack and have javascript functions \(using nodejs runtimes\), you show specify plugin option [`disableWebpack`](../api-reference/plugin-reference.md) to avoid errors.
+If you are not enabling webpack and have javascript functions (using nodejs runtimes), you show specify plugin option [`disableWebpack`](../api-reference/plugin-reference.md) to avoid errors.
 {% endhint %}
 
-Optionally, **if you are using Javascript \(ES6&gt;\)** at the function level \(your code\) you probably will want to have webpack enabled so everything is compiled before deploying it. Luckily all the dependency management for webpack, babel-core and loader, and serverless integration is done for you, except two small steps that allow you to have full control over your webpack configuration, instead of using embedded webpack configurations as commonly see on SPA/React apps.
+Optionally, **if you are using Javascript (ES6>)** at the function level (your code) you probably will want to have webpack enabled so everything is compiled before deploying it. Luckily all the dependency management for webpack, babel-core and loader, and serverless integration is done for you, except two small steps that allow you to have full control over your webpack configuration, instead of using embedded webpack configurations as commonly see on SPA/React apps.
 
 Basically, the idea is to create an entry on your **serverless.yml** file pointing the webpack configuration to your `webpack.config.js` and then create the webpack configuration file. This configuration file will have entry functions and externals exported by the hybridless framework, indicating what functions are required to be compiled and how.
 
@@ -91,9 +91,8 @@ module.exports = {
 Theoretically, you can customize your webpack configuration as you will, except by not removing the entries and externals calls for the hybridless framework.
 {% endhint %}
 
-It's relevant to say that all this webpack job is done by leveraging the [webpack](https://github.com/webpack/webpack), [babel](https://babeljs.io/) and [serverless-webpack](https://github.com/serverless-heaven/serverless-webpack#readme) plugin, so any additional configuration or problem with this specifically, might be found on these projects pages. Also, another important point is that all the management of these dependencies and setup is handled for you, so try to not duplicate the `serverless-webpack` setup on your serverless.yml file, for example. This could lead to undocumented issues.\`
+It's relevant to say that all this webpack job is done by leveraging the [webpack](https://github.com/webpack/webpack), [babel](https://babeljs.io) and [serverless-webpack](https://github.com/serverless-heaven/serverless-webpack#readme) plugin, so any additional configuration or problem with this specifically, might be found on these projects pages. Also, another important point is that all the management of these dependencies and setup is handled for you, so try to not duplicate the `serverless-webpack` setup on your serverless.yml file, for example. This could lead to undocumented issues.\`
 
 {% hint style="danger" %}
-Running `npm i -D webpack` **might be required** in some cases where NPM is erroneously  installing the webpack inside another module. 
+Running` npm i -D webpack` **might be required** in some cases where NPM is erroneously  installing the webpack inside another module.&#x20;
 {% endhint %}
-

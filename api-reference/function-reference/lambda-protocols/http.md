@@ -46,4 +46,3 @@
               allowCredentials: boolean;
           }
 ```
-

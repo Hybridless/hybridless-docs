@@ -1,6 +1,6 @@
 # Configure Environments Ivars
 
-As a good practice, we should always create an **env.yml** file at the root of your directory to handle multiple stages environments as follow. If you are not using **env.yml** based on the stages or not using it at all, you **should change** the `serverless.yml line 11` accordingly. 
+As a good practice, we should always create an **env.yml **file at the root of your directory to handle multiple stages environments as follow. If you are not using **env.yml **based on the stages or not using it at all, you **should change** the `serverless.yml line 11` accordingly.&#x20;
 
 {% code title="env.yml" %}
 ```yaml
@@ -25,7 +25,7 @@ prod:
 ```
 {% endcode %}
 
-This approach allows you to have multiple configurations based on your stage need and also to have a bunch of different configurations and constants injected right on your task or lambda and accessible on the process environment ivars. 
+This approach allows you to have multiple configurations based on your stage need and also to have a bunch of different configurations and constants injected right on your task or lambda and accessible on the process environment ivars.&#x20;
 
 Theoretically, you can live with one environment file per project, but if desired, you can always specify the environment property on the function or even event level to have that specific function with a set of specific environments only. This property allows a pure key-value object but would also allow the import syntax below.
 
@@ -36,4 +36,3 @@ ${file(config/another_env.yml)}
 ```
 
 As an **important** note, is good to mention that this feature is all provided by the **serverless framework**, the layer on top of hybridless. If you want to know more about serverless environments, please check this [link](https://www.serverless.com/framework/docs/providers/aws/guide/variables#referencing-environment-variables).
-

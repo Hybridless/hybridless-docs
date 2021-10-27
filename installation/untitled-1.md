@@ -13,17 +13,17 @@ $ npm init -y
 $ npm i -D serverless @hybridless/hybridless
 ```
 
-![Setup should be done as follow](../.gitbook/assets/screen-shot-2021-05-17-at-6.06.11-pm.png)
+![Setup should be done as follow](<../.gitbook/assets/Screen Shot 2021-05-17 at 6.06.11 PM.png>)
 
 {% hint style="info" %}
- Even if you are not developing on javascript or have any code, deployment is done via javascript and you are required to have the package.json and serverless.yml on the folder you are building \(commonly on the root directory of the project\).
+&#x20;Even if you are not developing on javascript or have any code, deployment is done via javascript and you are required to have the package.json and serverless.yml on the folder you are building (commonly on the root directory of the project).
 {% endhint %}
 
 Once you have completed the steps above, you should have the following structure.
 
-![](../.gitbook/assets/screen-shot-2021-05-17-at-6.09.56-pm.png)
+![](<../.gitbook/assets/Screen Shot 2021-05-17 at 6.09.56 PM.png>)
 
-Now, on your **serverless.yml** file, you should include the plugin on the top and everything can be left untouched or erased at the point you have only the following if you want a cleaner file. 
+Now, on your **serverless.yml** file, you should include the plugin on the top and everything can be left untouched or erased at the point you have only the following if you want a cleaner file.&#x20;
 
 {% code title="serverless.yml" %}
 ```yaml
@@ -43,5 +43,4 @@ custom:
 ```
 {% endcode %}
 
-### 
-
+###

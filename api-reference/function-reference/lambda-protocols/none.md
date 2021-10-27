@@ -22,4 +22,3 @@
           /* Lambda container specific */
           runtime?: 'nodejs10' | 'nodejs12' | 'nodejs14' | 'container';
 ```
-

@@ -27,4 +27,3 @@
           protocolArn?: any; 
           filterPolicy?: object;
 ```
-

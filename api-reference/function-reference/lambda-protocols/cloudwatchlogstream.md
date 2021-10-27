@@ -27,4 +27,3 @@
           cloudWatchLogGroup: string;
           cloudWatchLogFilter?: string;
 ```
-

@@ -1,6 +1,6 @@
 # Function Reference
 
-Functions are basically a virtual definition of a cluster of services \(events\), that commonly have the same general purpose or strong similarities, but are triggered differently. ECS clusters can be auto-created if needed or referenced from another ECS physical cluster so you can reuse the same cluster across these virtual clusters and share EC2 instances across services and applications for example.
+Functions are basically a virtual definition of a cluster of services (events), that commonly have the same general purpose or strong similarities, but are triggered differently. ECS clusters can be auto-created if needed or referenced from another ECS physical cluster so you can reuse the same cluster across these virtual clusters and share EC2 instances across services and applications for example.
 
 ```yaml
 ...serverless.yml content (service, provider, plugins, custom, Resources..)
@@ -33,19 +33,19 @@ hybridless:
 ```
 
 {% hint style="success" %}
-For the lack of simplicity, we are using an inline function definition, but it's highly recommended to **NOT** use this form but use the [import form instead.](plugin-reference.md#functions)
+For the lack of simplicity, we are using an inline function definition, but it's highly recommended to **NOT **use this form but use the [import form instead.](plugin-reference.md#functions)
 {% endhint %}
 
 ## Parameters
 
 ### `ecsClusterArn`
 
-* **Description:** When specified, it will not create an ECS cluster for the required events and instead, will place all required ECS tasks on the specified cluster. Should always be in companion with `ecsIngressSecGroupId` \(described below\)
-* **Value**: ECS Cluster ARN. Intrinsic functions and SSM imports are fully compatible. 
-* **Default:** `null` \(ECS cluster will be auto-created and managed by Hybridless\).
-* _Optional_ 
+* **Description: **When specified, it will not create an ECS cluster for the required events and instead, will place all required ECS tasks on the specified cluster. Should always be in companion with `ecsIngressSecGroupId` (described below)
+* **Value**: ECS Cluster ARN. Intrinsic functions and SSM imports are fully compatible.&#x20;
+* **Default:** `null` (ECS cluster will be auto-created and managed by Hybridless).
+* _Optional _
 
-    Examples:
+&#x20;   Examples:
 
 ```yaml
 ecsClusterArn: arn:aws:ecs:us-west-2:123456789012:cluster/default
@@ -57,11 +57,11 @@ ecsIngressSecGroupId: ${ssm:/prefix-${self:custom.stage}/ecsIngressSecGroupId} #
 ### `ecsIngressSecGroupId`
 
 * **Description:** When`ecsClusterArn`is specified, you should also specify the ingress security group for that cluster.
-* **Value:** Ingress Security Group ID.
+* **Value: **Ingress Security Group ID.
 * **Default:**  `null`
 * _Optional_
 
-    Example:
+&#x20;   Example:
 
 ```yaml
 ecsIngressSecGroupId: sg-0700eee00ee0ee0I
@@ -72,11 +72,11 @@ ecsIngressSecGroupId: sg-0700eee00ee0ee0I
 ### `enableContainerInsights`
 
 * **Description:** When enabled, it will overwrite the account settings and enable the ECS container insight for the auto-created ECS cluster. If false, it will respect the account settings.
-* **Value:** boolean, `true` or `false`
-* **Default:** `false` \(does respect the account settings\)
+* **Value: **boolean, `true` or `false`
+* **Default:** `false` (does respect the account settings)
 * _Optional_
 
-        Example:
+&#x20;       Example:
 
 ```yaml
 enableContainerInsights: true
@@ -87,11 +87,11 @@ enableContainerInsights: true
 ### `albListenerArn`
 
 * **Description:** If specified, the plugin will not create the Application Load Balancer for that specific function and will attach all target groups from each ECS service created to the specified load balancer.
-* **Value:** Application Load Balancer \(ALB\) ARN. Intrinsic functions and SSM imports are fully compatible. 
-* **Default:** `null` \(ALB cluster will be auto-created and managed by Hybridless\).
+* **Value: **Application Load Balancer (ALB) ARN. Intrinsic functions and SSM imports are fully compatible.&#x20;
+* **Default:** `null` (ALB cluster will be auto-created and managed by Hybridless).
 * _Optional_
 
-        Example:
+&#x20;       Example:
 
 ```yaml
 albListenerArn: arn:aws:elasticloadbalancing:us-east-2:123456789012:listener/app/my-load-balancer/1234567890123456/1234567890123456
@@ -103,12 +103,12 @@ albListenerArn: !Ref albListenerArn ### intrinsic function form
 
 ### `albIsPrivate`
 
-* **Description:** Indicates if the load balancer should be private \(internal\) and only available within the VPC.
-* **Value:** boolean, `true` or `false`
-* **Default:** `false` \(Load balancer will be publicly available\)
+* **Description:** Indicates if the load balancer should be private (internal) and only available within the VPC.
+* **Value: **boolean, `true` or `false`
+* **Default:** `false` (Load balancer will be publicly available)
 * _Optional_
 
-        Example:
+&#x20;       Example:
 
 ```yaml
 albIsPrivate: true
@@ -118,12 +118,12 @@ albIsPrivate: true
 
 ### `albAdditionalTimeout`
 
-* **Description:** By default, when an event timeout is specified at function or event level **and** when the plugin is auto-creating the Application Load Balancer, the plugin will add 1 extra second to the load balancer timeout, so we make sure our code can really execute up to the time-limit and the load balancer still accept the response because it has a greater timeout. 
-* **Value:** integer, value in **seconds. `10`** will be 10 additional seconds of timeout on the auto-created load balancer from the maximum timeout of the events of the function. 
-* **Default:** `1` \(Will add 1 second to the specified or default timeout\)
+* **Description:** By default, when an event timeout is specified at function or event level **and **when the plugin is auto-creating the Application Load Balancer, the plugin will add 1 extra second to the load balancer timeout, so we make sure our code can really execute up to the time-limit and the load balancer still accept the response because it has a greater timeout.&#x20;
+* **Value: **integer, value in **seconds. `10` **will be 10 additional seconds of timeout on the auto-created load balancer from the maximum timeout of the events of the function.&#x20;
+* **Default:** `1` (Will add 1 second to the specified or default timeout)
 * _Optional_
 
-        Example:
+&#x20;       Example:
 
 ```yaml
 albAdditionalTimeout: 2 #2 seconds
@@ -138,21 +138,21 @@ You can this value to `0` if you want to disable it. But be aware that time limi
 ### `vpc`
 
 * **Description:** Indicates if the function events should be contained in a VPC. Two types of VPCs are allowed/accepted, self-managed VPC and plugin-managed VPC.
-  *  **Plugin-Managed** **VPC** requires the `cidr` and `subnets` params to be set. VPC will be auto-created by the plugin and shared among all events, ECS-based or Lambda \(serverless\). Currently, there is a limitation on a function with serverless events only, and this configuration is not accepted for this type of VPC. [More here.](https://github.com/Hybridless/hybridless/issues/4)
-  * **Self-Managed VPC** required `vpcId` , `securityGroupIds` , `subnetIds` and optionally `albSubnetIds`. All ECS tasks, Lambda functions and Load Balancers will be placed inside the specified VPC.
-* **Value:** object. 
+  * &#x20;**Plugin-Managed** **VPC** requires the `cidr` and `subnets` params to be set. VPC will be auto-created by the plugin and shared among all events, ECS-based or Lambda (serverless). Currently, there is a limitation on a function with serverless events only, and this configuration is not accepted for this type of VPC. [More here.](https://github.com/Hybridless/hybridless/issues/4)
+  * **Self-Managed VPC **required `vpcId` , `securityGroupIds` , `subnetIds` and optionally `albSubnetIds`. All ECS tasks, Lambda functions and Load Balancers will be placed inside the specified VPC.
+* **Value: **object.&#x20;
   * **Plugin-Managed VPC** Properties
     * `cidr`
     * `subnets`
-  * **Self-Managed VPC** Properties
+  * **Self-Managed VPC **Properties
     * `vpcId`
     * `securityGroupIds`
     * `subnetIds`
-    * `albSubnetIds` \(optional, overwrites `subnetIds`\)
-* **Default:** `null` \(no default configuration\)
-* _Optional, **but** **required** for **ECS based event** as `process` , `httpd` and `scheduledTask`._
+    * `albSubnetIds` (optional, overwrites `subnetIds`)
+* **Default:** `null` (no default configuration)
+* _Optional, **but** **required** for** ECS based event** as `process` , `httpd` and `scheduledTask`._
 
-        Example:
+&#x20;       Example:
 
 {% tabs %}
 {% tab title="Plugin-Managed VPC" %}
@@ -178,7 +178,7 @@ vpc:
 ```
 {% endtab %}
 
-{% tab title="Self-Managed VPC \(SSM\)" %}
+{% tab title="Self-Managed VPC (SSM)" %}
 ```
 vpc:
   vpcId: ${ssm:/test/VPC_ID}
@@ -195,79 +195,79 @@ vpc:
 {% endtabs %}
 
 {% hint style="warning" %}
-**This configuration is required** when any **ECS based event** as `process` , `httpd` and `scheduledTask`is specified on the function.
+**This configuration is required** when any** ECS based event** as `process` , `httpd` and `scheduledTask`is specified on the function.
 {% endhint %}
 
 
 
 ### `vpc.cidr`
 
-* **Description:** Used for **Plugin-Managed VPC** configuration as the primary CIDR of your VPC. Currently, this configuration is not allowed when function events are serverless only. \([\#4](https://github.com/Hybridless/hybridless/issues/4)\)
-* **Value:** string. \([CIDR notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)\). `10.0.0.0/16`
-* **Default:** `null` \(no default configuration\)
-* _Optional, but required if specifying`subnets`property. \(Plugin-Managed VPC\)_
-* Examples on [`vpc`](cluster-reference.md#vpc) 
+* **Description:** Used for **Plugin-Managed VPC** configuration as the primary CIDR of your VPC. Currently, this configuration is not allowed when function events are serverless only. ([#4](https://github.com/Hybridless/hybridless/issues/4))
+* **Value: **string. ([CIDR notation](https://en.wikipedia.org/wiki/Classless\_Inter-Domain\_Routing)). `10.0.0.0/16`
+* **Default:** `null` (no default configuration)
+* _Optional, but required if specifying`subnets`property. (Plugin-Managed VPC)_
+* Examples on [`vpc`](cluster-reference.md#vpc)&#x20;
 
 
 
 ### `vpc.subnets`
 
-* **Description:** Used for **Plugin-Managed VPC** configuration as the subnets of your VPC. Currently, this configuration is not allowed when function events are serverless only. \([\#4](https://github.com/Hybridless/hybridless/issues/4)\)
-* **Value:** array of strings on CIDR notation. `192.168.0.1/24`
-* **Default:** `null` \(no default configuration\)
-* _Optional, but required if specifying`cidr`property. \(Plugin-Managed VPC\)_
-* Examples on [`vpc`](cluster-reference.md#vpc) 
+* **Description:** Used for **Plugin-Managed VPC** configuration as the subnets of your VPC. Currently, this configuration is not allowed when function events are serverless only. ([#4](https://github.com/Hybridless/hybridless/issues/4))
+* **Value: **array of strings on CIDR notation. `192.168.0.1/24`
+* **Default:** `null` (no default configuration)
+* _Optional, but required if specifying`cidr`property. (Plugin-Managed VPC)_
+* Examples on [`vpc`](cluster-reference.md#vpc)&#x20;
 
 
 
 ### `vpc.vpcId`
 
 * **Description:** Used for **Self-Managed VPC** configuration to specify the vpc Id of which vpc the events should be placed in.
-* **Value:** vpc Id as a string or object \(intrinsic function\). `vpc-1234567890abcdef0`
-* **Default:** `null` \(no default configuration\)
-* _Optional, but required if_ using **Self-Managed VPC**_._
-* Examples on [`vpc`](cluster-reference.md#vpc) 
+* **Value: **vpc Id as a string or object (intrinsic function). `vpc-1234567890abcdef0`
+* **Default:** `null` (no default configuration)
+* _Optional, but required if _using **Self-Managed VPC**_._
+* Examples on [`vpc`](cluster-reference.md#vpc)&#x20;
 
 
 
 ### `vpc.securityGroupIds`
 
 * **Description:** Which security groups your tasks and lambdas should use on a **Self-Managed VPC.**
-* **Value:** array of security group id strings or any sort of intrinsic function that returns an array of security group ids. `sg-94b3a1f6`
-* **Default:** `null` \(no default configuration\)
-* _Optional, but required if_ using **Self-Managed VPC**_._
-* Examples on [`vpc`](cluster-reference.md#vpc) 
+* **Value: **array of security group id strings or any sort of intrinsic function that returns an array of security group ids. `sg-94b3a1f6`
+* **Default:** `null` (no default configuration)
+* _Optional, but required if _using **Self-Managed VPC**_._
+* Examples on [`vpc`](cluster-reference.md#vpc)&#x20;
 
 
 
 ### `vpc.subnetIds`
 
 * **Description:** Which subnets your tasks, lambdas and Load Balancer should be placed in on a **Self-Managed VPC.**
-* **Value:** array of subnet id strings or any sort of intrinsic function that returns an array of subnet ids. `subnet-b46032ec`
-* **Default:** `null` \(no default configuration\)
-* _Optional, but required if_ using **Self-Managed VPC**_._
-* Examples on [`vpc`](cluster-reference.md#vpc) 
+* **Value: **array of subnet id strings or any sort of intrinsic function that returns an array of subnet ids. `subnet-b46032ec`
+* **Default:** `null` (no default configuration)
+* _Optional, but required if _using **Self-Managed VPC**_._
+* Examples on [`vpc`](cluster-reference.md#vpc)&#x20;
 
 
 
 ### `vpc.albSubnetIds`
 
-* **Description:** Which subnets your self created load balancer should be placed in on a **Self-Managed VPC,** takes precende over `subnetIds`.
-* **Value:** array of subnet id strings or any sort of intrinsic function that returns an array of subnet ids. `subnet-b46032ec`
-* **Default:** `null` \(no default configuration\)
+* **Description:** Which subnets your self created load balancer should be placed in on a **Self-Managed VPC, **takes precende over `subnetIds`.
+* **Value: **array of subnet id strings or any sort of intrinsic function that returns an array of subnet ids. `subnet-b46032ec`
+* **Default:** `null` (no default configuration)
 * _Optional_
-* Examples on [`vpc`](cluster-reference.md#vpc) 
+* Examples on [`vpc`](cluster-reference.md#vpc)&#x20;
 
 
 
 ### `timeout`
 
 * **Description:** Default timeout to be used if no `timeout` is specified on the event level.
-* **Value:** Integer, value in seconds. `10`
+* **Value: **Integer, value in seconds. `10`
 * **Default:**  `30`
 * _Optional_
 
-    Example:
+&#x20;   Example:
 
 ```yaml
 timeout: 60
@@ -278,11 +278,11 @@ timeout: 60
 ### `handler`
 
 * **Description:** Default handler to be used across event if not specified at event level.
-* **Value:** String value with the relative path to your file and the function usually on the following notation `src/path/file.handler`
+* **Value: **String value with the relative path to your file and the function usually on the following notation `src/path/file.handler`
 * **Default:**  No default value
 * **Required**
 
-    Example:
+&#x20;   Example:
 
 ```yaml
 handler: arc/path/file.handler
@@ -292,14 +292,14 @@ handler: arc/path/file.handler
 
 ### `memory`
 
-* **Description:** Default memory size your tasks and lambdas functions will have. Event level `memory` property will take precendece over this. Also is using mixed events \(serverless and container\) you might need to specify this configuration per event due size contrains in each event type. 
+* **Description:** Default memory size your tasks and lambdas functions will have. Event level `memory` property will take precendece over this. Also is using mixed events (serverless and container) you might need to specify this configuration per event due size contrains in each event type.&#x20;
   * For `lambda` and `lambdaContainer` you should use the [lambda defined memory sizes.](https://docs.aws.amazon.com/lambda/latest/dg/configuration-memory.html)
   * Other type of events, if not placed on EC2, it should respect [fargate memory/cpu constrains](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html).
-* **Value:** Integer, value in MBs. `512`
-* **Default:**  Defaults to `1024` MB.  
+* **Value: **Integer, value in MBs. `512`
+* **Default:**  Defaults to `1024` MB. &#x20;
 * _Optional_
 
-    Example:
+&#x20;   Example:
 
 ```yaml
 memory: 2048
@@ -310,9 +310,7 @@ memory: 2048
 ### `events`
 
 * **Description:** Events are the core property of a function, they are required if you want your function to be deployed. Logically each event is deployed as a lambda function or event an ECS task but is virtually bound to receive that event. [Check more about events and what event is suited for your use case.](function-reference/)
-* **Value:** Array of event objects.
+* **Value: **Array of event objects.
 * **Default:**  null
 * _Optional, but required if your function is being deployed. Otherwise, it is an empty definition if not initialization if we can say that._
-
-
 

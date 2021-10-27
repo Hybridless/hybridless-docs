@@ -27,4 +27,3 @@
           prototocolArn?: any; 
           queueBatchSize?: number; 
 ```
-

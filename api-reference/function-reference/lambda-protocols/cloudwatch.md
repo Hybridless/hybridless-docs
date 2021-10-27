@@ -29,4 +29,3 @@
           cloudWatchDetailState?: string;
           cloudWatchInput?: string | any;
 ```
-
